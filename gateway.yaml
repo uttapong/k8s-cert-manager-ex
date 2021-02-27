@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: my-gateway
+  namespace: my-namespace
+  resourceVersion: '1111111'
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - hosts:
+        - www.my-domain.com
+      port:
+        name: strapi
+        number: 1337
+        protocol: TCP
+    - hosts:
+        - '*.my-domain.com'
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+    - hosts:
+        - '*.my-domain.com'
+      port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: ingress-cert
+        mode: SIMPLE
