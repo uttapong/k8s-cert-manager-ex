@@ -12,7 +12,7 @@ spec:
       - dns01:
           cloudDNS:
             # The ID of the GCP project
-            project: my-project-id
+            project: my-project-id -
             # This is the secret used to access the service account
             serviceAccountSecretRef:
               name: clouddns-dns01-solver-svc-acct
